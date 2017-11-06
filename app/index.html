@@ -19,24 +19,23 @@
 </head>
 
 <body>
+    <div class="content is-subscriber" role="document">
+        {% include "shell/navigation.html" ignore missing %}
+        <!--endRemoveIf(production)-->
+        <div>
+            {% include "partials/stylesheets.html" %}
+        </div>
+        {% include "main-body.html" ignore missing %} {% include "partials/recirc-box.html" %}
+        <div>
+            {% include "partials/script-links.html" %}
+        </div>
 
-    {% include "shell/navigation.html" ignore missing %}
-    <!--endRemoveIf(production)-->
-<div>
-    {% include "partials/stylesheets.html" %}
-</div>
-    {% include "main-body.html" ignore missing %}
-    {% include "partials/recirc-box.html" %}
-<div>
-    {% include "partials/script-links.html" %}
-</div>
+        <!--removeIf(production)-->
 
-    <!--removeIf(production)-->
-
-    <!--build:js js/main.min.js -->
-    <script src="js/main.js"></script>
-    <!-- endbuild -->
-
+        <!--build:js min-files/main.min.js -->
+        <script src="js/main.js"></script>
+        <!-- endbuild -->
+    </div>
 </body>
 
 </html>
