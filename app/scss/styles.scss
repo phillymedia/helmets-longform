@@ -1,3 +1,24 @@
 @import 'longform-styles';
 @import 'philly-styles/values';
 @import 'garland-styles';
+
+
+.sourcebox {
+    background-color: #444;
+    padding-top: 20px;
+}
+
+
+
+.sourcebox h4 {
+    color: #eee;
+    padding-bottom: 10px;
+    font-size: 18px;
+    font-family: Gotham Narrow SSm A,Gotham Narrow SSm B,Gotham Narrow,Arial,sans-serif;
+}
+
+.sourcebox p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #eee;
+}

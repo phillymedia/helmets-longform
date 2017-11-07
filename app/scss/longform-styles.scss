@@ -7,13 +7,23 @@
 }
 
 #backgroundImage-1 {
-    background-image: url("http://media.philly.com/images/ssHelmets-a1.JPG");
+    background-image: url("http://media.philly.com/images/ssHelmets-b2.JPG");
     background-position: left 50% top 79px;
     @include tablet {
         background-position: left 50% top 49px;
         background-size: contain;
     }
 }
+
+// #backgroundImage-1 {
+//     background-image: url("http://media.philly.com/images/ssHelmets-a1.JPG");
+//     background-position: left 50% top 79px;
+//     @include tablet {
+//         background-position: left 50% top 49px;
+//         background-size: contain;
+//     }
+// }
+
 
 #backgroundImage-2 {
     background-image: url("http://media.philly.com/images/ssHelmets-h4.JPG");
