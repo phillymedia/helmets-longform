@@ -1,0 +1,151 @@
+@import 'philly-styles/values';
+
+.scrolltrigger {
+    position: relative;
+    width: 100%;
+    height: 1px;
+}
+
+.helmets-scroll {
+    width: 100vw;
+    height: 105vh;
+    position: relative;
+    overflow: hidden;
+
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    background: white;
+    font-family: $philly-sans;
+
+    .text-scroll {
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        z-index: 4;
+
+        .text-section {
+            padding: 50vh 0;
+            max-width: 500px;
+            margin: 0 auto;
+            @include mobile {
+                max-width: none;
+            };
+        }
+
+        .head {
+            font-weight: 900;
+            font-size: 22px;
+            background: rgba(white,0.8);
+            position: relative;
+            padding-left: 20px;
+            padding-right: 20px;
+
+            &::after {
+                position: absolute;
+                content: "";
+                left: 0;
+                right: 0;
+                top: -20px;
+                height: 20px;
+                background: rgba(white,0.8);
+                z-index: 5;
+            }
+        }
+
+        .text {
+            font-family: $philly-sans;
+            background: rgba(white,0.8);
+            position: relative;
+            padding-left: 20px;
+            padding-right: 20px;
+
+            &::after {
+                position: absolute;
+                content: "";
+                left: 0;
+                right: 0;
+                bottom: -20px;
+                height: 20px;
+                background: rgba(white,0.8);
+                z-index: 5;
+            }
+        }
+
+        .main-head {
+            padding-top: 30vh;
+            max-width: 800px;
+            text-align: center;
+            padding-left: 50px;
+            padding-right: 50px;
+            @include mobile {
+                padding: 0;
+                max-width: none;
+            };
+
+            .head {
+                font-size: 28px;
+                @include mobile {
+                    font-size: 25px;
+                    line-height: normal;
+                };
+            }
+
+            .text {
+                font-size: 18px;
+            }
+        }
+    }
+
+    .image-scroll {
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        z-index: 3;
+        @include display-flex;
+        align-items: center;
+        align-content: center;
+    }
+    .scroll-img {
+        position: absolute;
+        width: 100%;
+        opacity: 0;
+        @include transition(opacity 0.5s ease);
+
+        @include mobile {
+            width: 130%;
+            margin-left: -15%;
+        };
+
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+}
+
+.fadeIn {
+    @include transition(opacity 0.5s ease);
+    opacity: 1 !important;
+}
+
+
+.in-view {
+    position: fixed;
+}
+
+.in-view-text {
+    overflow: scroll !important;
+}
+
+.creditscroll {
+    position: absolute;
+    bottom: 10vh;
+    z-index: 2;
+    right: 20px;
+    font-style: normal;
+
+}
