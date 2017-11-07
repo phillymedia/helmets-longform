@@ -10,6 +10,7 @@
     width: 100vw;
     height: 105vh;
     position: relative;
+    overflow: hidden;
 
     top: 0;
     left: 0;
@@ -29,6 +30,9 @@
             padding: 50vh 0;
             max-width: 500px;
             margin: 0 auto;
+            @include mobile {
+                max-width: none;
+            };
         }
 
         .head {
@@ -76,9 +80,17 @@
             text-align: center;
             padding-left: 50px;
             padding-right: 50px;
+            @include mobile {
+                padding: 0;
+                max-width: none;
+            };
 
             .head {
                 font-size: 28px;
+                @include mobile {
+                    font-size: 25px;
+                    line-height: normal;
+                };
             }
 
             .text {
@@ -101,6 +113,11 @@
         width: 100%;
         opacity: 0;
         @include transition(opacity 0.5s ease);
+
+        @include mobile {
+            width: 130%;
+            margin-left: -15%;
+        };
 
 
         img {
@@ -127,7 +144,7 @@
 .creditscroll {
     position: absolute;
     bottom: 10vh;
-    z-index: 10;
+    z-index: 2;
     right: 20px;
     font-style: normal;
 
