@@ -62,4 +62,10 @@ $(document).ready(function() {
         })
     })
 
+    $(window).resize(function(){
+        gethelmetposition = $(".scrolltrigger").offset().top;
+        getendposition = $(".scrollend").offset().top;
+
+    })
+
 });
