@@ -24,19 +24,36 @@ $(document).ready(function() {
         var $hscroll = $(".helmets-scroll");
 
         if (gethelmetposition >= $(window).scrollTop() && getendposition >= $(window).scrollTop()) {
+
             $hscroll.removeClass("in-view");
             $(".text-scroll").removeClass("in-view-text");
-        }
-
-        if (gethelmetposition <= $(window).scrollTop()) {
-            $hscroll.addClass("in-view");
-            $(".text-scroll").addClass("in-view-text");
         }
 
         if (getendposition < $(window).scrollTop() + $(window).height()) {
             $hscroll.removeClass("in-view");
             $(".text-scroll").removeClass("in-view-text");
         }
+
+        $(window).bind('mousewheel DOMMouseScroll', function(event){
+            if (event.originalEvent.wheelDelta>=120 || event.originalEvent.wheelDelta <= -120) {
+                if (gethelmetposition <= $(window).scrollTop() && getendposition > $(window).scrollTop() + $(window).height()*.8) {
+                    $hscroll.addClass("in-view");
+                    $(".text-scroll").addClass("in-view-text");
+                }
+
+            } else {
+                if (gethelmetposition <= $(window).scrollTop() && getendposition > $(window).scrollTop() + $(window).height()) {
+                    $hscroll.addClass("in-view");
+                    $(".text-scroll").addClass("in-view-text");
+                }
+            }
+
+        });
+
+        // if (gethelmetposition <= $(window).scrollTop() && getendposition > $(window).scrollTop() + $(window).height()*.95) {
+        //     $hscroll.addClass("in-view");
+        //     $(".text-scroll").addClass("in-view-text");
+        // }
     })
 
     $(".text-scroll").scroll(function() {
@@ -60,6 +77,12 @@ $(document).ready(function() {
             // }
 
         })
+    })
+
+    $(window).resize(function(){
+        gethelmetposition = $(".scrolltrigger").offset().top;
+        getendposition = $(".scrollend").offset().top;
+
     })
 
 });
