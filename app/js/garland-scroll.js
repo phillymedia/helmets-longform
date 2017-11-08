@@ -1,18 +1,4 @@
-$(".text-section").each(function() {
-    var $this = $(this);
-    if ($this.attr("class").includes("active")) {
-        var findsrc = $this.find("img").attr("data-src");
-        $this.find("img").attr("src", findsrc);
-    }
 
-    setTimeout(function() {
-        if ($this.find("img").attr("src") == "#") {
-            var findsrc = $this.find("img").attr("data-src");
-            $this.find("img").attr("src", findsrc);
-        }
-    }, 1500);
-
-})
 // setTimeout(function() {
 //
 //     var gethelmetposition = ($(".scrolltrigger").offset().top);
@@ -78,6 +64,24 @@ $(".text-section").each(function() {
 //
 //     })
 //     }, 1500);
+$(document).ready(function(){
+    $(".text-section").each(function() {
+        var $this = $(this);
+        if ($this.attr("class").includes("active")) {
+            var findsrc = $this.find("img").attr("data-src");
+            $this.find("img").attr("src", findsrc);
+        }
+
+        setTimeout(function() {
+            if ($this.find("img").attr("src") == "#") {
+                var findsrc = $this.find("img").attr("data-src");
+                $this.find("img").attr("src", findsrc);
+            }
+        }, 1500);
+
+    })
+
+
 
 var loadgraphicImage = function(frame) {
     var img = frame.find("img");
@@ -138,3 +142,4 @@ $(".helmets-scroll").each(function() {
         advance($this, direction.includes("next") ? "right" : "left");
     })
 })
+});
