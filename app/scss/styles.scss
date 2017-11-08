@@ -22,3 +22,29 @@
     line-height: 1.5;
     color: #eee;
 }
+
+
+.text-section {
+  display: none;
+  @include transition(all 0.3s ease-in-out);
+
+
+  &.active {
+    display: block;
+  }
+
+  &.post-active {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    right: 0;
+    &.fade {
+      opacity: 0;
+    }
+  }
+
+  &.animate {
+      @include transition(all 0.3s ease-in-out);
+  }
+}
