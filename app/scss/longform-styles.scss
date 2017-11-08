@@ -6,6 +6,12 @@
   height: auto;
 }
 
+
+.subscribetoday a {
+    font-weight: 700;
+    color: #fff!important;
+}
+
 #backgroundImage-1 {
   background-image: url("http://media.philly.com/images/RS_x_20171107_SOHARA29_F_332550562.jpg");
   background-position: left 50% top 79px;
@@ -49,15 +55,19 @@
   }
 }
 
+
+
+
 .overlayText {
   position: absolute;
   top: auto;
-  bottom: 20%;
+  left: 10%;
+  bottom: 5%;
   width: 100%;
-  margin: auto;
-  text-align: center;
+  /* margin: auto; */
+  text-align: left;
   color: #fff;
-  font-family: $philly-sans;
+  font-family: "Gotham Narrow SSm A", "Gotham Narrow SSm B", "Gotham Narrow", "Arial", sans-serif;
   font-weight: 600;
   letter-spacing: -5px;
   line-height: 1;
@@ -67,6 +77,8 @@
     font-size: 68px;
     padding: 0 10px;
     bottom: 0%;
+    text-align: center;
+    left: 0%;
   }
   @include mobile {
     position: relative;
