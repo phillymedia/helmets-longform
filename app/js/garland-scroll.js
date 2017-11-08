@@ -1,88 +1,91 @@
-$(document).ready(function() {
-    var gethelmetposition = ($(".scrolltrigger").offset().top);
-    var getendposition = $(".scrollend").offset().top;
 
+    setTimeout(function() {
 
-    $(".scroll-img").each(function() {
-        var $this = $(this);
-        if ($this.attr("class").includes("firstimg")) {
-            var findsrc = $this.find("img").attr("data-src");
-            $this.find("img").attr("src", findsrc);
-            $this.addClass("fadeIn");
-        }
+        var gethelmetposition = ($(".scrolltrigger").offset().top);
+        var getendposition = $(".scrollend").offset().top;
 
-        setTimeout(function() {
-            if ($this.find("img").attr("src") == "#") {
-                var findsrc = $this.find("img").attr("data-src");
-                $this.find("img").attr("src", findsrc);
-            }
-        }, 1500);
+            console.log(gethelmetposition, getendposition)
 
-    })
-
-    $(window).scroll(function() {
-        var $hscroll = $(".helmets-scroll");
-
-        if (gethelmetposition >= $(window).scrollTop() && getendposition >= $(window).scrollTop()) {
-
-            $hscroll.removeClass("in-view");
-            $(".text-scroll").removeClass("in-view-text");
-        }
-
-        if (getendposition < $(window).scrollTop() + $(window).height()) {
-            $hscroll.removeClass("in-view");
-            $(".text-scroll").removeClass("in-view-text");
-        }
-
-        $(window).bind('mousewheel DOMMouseScroll', function(event){
-            if (event.originalEvent.wheelDelta>=120 || event.originalEvent.wheelDelta <= -120) {
-                if (gethelmetposition <= $(window).scrollTop() && getendposition > $(window).scrollTop() + $(window).height()*.8) {
-                    $hscroll.addClass("in-view");
-                    $(".text-scroll").addClass("in-view-text");
+            $(".scroll-img").each(function() {
+                var $this = $(this);
+                if ($this.attr("class").includes("firstimg")) {
+                    var findsrc = $this.find("img").attr("data-src");
+                    $this.find("img").attr("src", findsrc);
+                    $this.addClass("fadeIn");
                 }
 
-            } else {
-                if (gethelmetposition <= $(window).scrollTop() && getendposition > $(window).scrollTop() + $(window).height()) {
-                    $hscroll.addClass("in-view");
-                    $(".text-scroll").addClass("in-view-text");
+                setTimeout(function() {
+                    if ($this.find("img").attr("src") == "#") {
+                        var findsrc = $this.find("img").attr("data-src");
+                        $this.find("img").attr("src", findsrc);
+                    }
+                }, 1500);
+
+            })
+
+            $(window).scroll(function() {
+                var $hscroll = $(".helmets-scroll");
+
+                if (gethelmetposition >= $(window).scrollTop() && getendposition >= $(window).scrollTop()) {
+                    console.log(gethelmetposition, $(window).scrollTop(), getendposition)
+
+                    $hscroll.removeClass("in-view");
+                    $(".text-scroll").removeClass("in-view-text");
                 }
-            }
 
-        });
+                if (getendposition < $(window).scrollTop() + $(window).height()) {
+                    $hscroll.removeClass("in-view");
+                    $(".text-scroll").removeClass("in-view-text");
+                }
 
-        // if (gethelmetposition <= $(window).scrollTop() && getendposition > $(window).scrollTop() + $(window).height()*.95) {
-        //     $hscroll.addClass("in-view");
-        //     $(".text-scroll").addClass("in-view-text");
-        // }
-    })
+                $(window).bind('mousewheel DOMMouseScroll', function(event) {
+                    if (event.originalEvent.wheelDelta >= 120 || event.originalEvent.wheelDelta <= -120) {
+                        if (gethelmetposition <= $(window).scrollTop() && getendposition > $(window).scrollTop() + $(window).height() * .8) {
+                            $hscroll.addClass("in-view");
+                            $(".text-scroll").addClass("in-view-text");
+                        }
 
-    $(".text-scroll").scroll(function() {
-        $(".text-section").each(function() {
-            var elementtop = $(this).offset().top + $(window).height() / 2;
-            var elementbottom = $(this).offset().top + $(".helmets-scroll").height() - $(window).height() / 2;
-            var divtop = $('.helmets-scroll').offset().top;
-            var divbottom = $('.helmets-scroll').offset().top + $(window).height();
+                    } else {
+                        if (gethelmetposition <= $(window).scrollTop() && getendposition > $(window).scrollTop() + $(window).height()) {
+                            $hscroll.addClass("in-view");
+                            $(".text-scroll").addClass("in-view-text");
+                        }
+                    }
 
-            if (elementtop - divbottom <= 0 && elementbottom - divtop > 0) {
-                var getindex = $(this).index();
-                $(".scroll-img").removeClass("fadeIn");
-                $(".scroll-img").eq(getindex).addClass("fadeIn");
+                });
 
-            }
+                // if (gethelmetposition <= $(window).scrollTop() && getendposition > $(window).scrollTop() + $(window).height()*.95) {
+                //     $hscroll.addClass("in-view");
+                //     $(".text-scroll").addClass("in-view-text");
+                // }
+            })
 
-            // console.log($top)
+            $(".text-scroll").scroll(function() {
+                $(".text-section").each(function() {
+                    var elementtop = $(this).offset().top + $(window).height() / 2;
+                    var elementbottom = $(this).offset().top + $(".helmets-scroll").height() - $(window).height() / 2;
+                    var divtop = $('.helmets-scroll').offset().top;
+                    var divbottom = $('.helmets-scroll').offset().top + $(window).height();
 
-            // if($top < $(window).scrollTop() && $bottom > $(window).scrollTop()) {
-            //     console.log($(this).index())
-            // }
+                    if (elementtop - divbottom <= 0 && elementbottom - divtop > 0) {
+                        var getindex = $(this).index();
+                        $(".scroll-img").removeClass("fadeIn");
+                        $(".scroll-img").eq(getindex).addClass("fadeIn");
 
-        })
-    })
+                    }
 
-    $(window).resize(function(){
-        gethelmetposition = $(".scrolltrigger").offset().top;
-        getendposition = $(".scrollend").offset().top;
+                    // console.log($top)
 
-    })
+                    // if($top < $(window).scrollTop() && $bottom > $(window).scrollTop()) {
+                    //     console.log($(this).index())
+                    // }
 
-});
+                })
+            })
+
+            $(window).resize(function() {
+                gethelmetposition = $(".scrolltrigger").offset().top;
+                getendposition = $(".scrollend").offset().top;
+
+            })
+    }, 3000);
