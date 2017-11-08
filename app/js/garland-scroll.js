@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    var gethelmetposition = ($(".scrolltrigger").offset().top - 40);
+    var gethelmetposition = ($(".scrolltrigger").offset().top);
     var getendposition = $(".scrollend").offset().top;
 
 
