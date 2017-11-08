@@ -100,7 +100,7 @@
 
     .image-scroll {
         top: 40px;
-        position: absolute;
+        // position: absolute;
         width: 100vw;
         height: 100vh;
         z-index: 3;
@@ -148,4 +148,18 @@
     right: 20px;
     font-style: normal;
 
+}
+
+.skip {
+    top: 100px;
+    right: 20px;
+    position: absolute;
+    z-index: 100;
+    background: #ddd;
+    padding: 6px 10px 4px 10px;
+    font-size: 15px;
+    font-family: $philly-sans;
+    font-weight: 900;
+    cursor: pointer;
+    border-radius: 3px;
 }
