@@ -17,7 +17,10 @@
   background-position: left 50% top 79px;
   @include tablet {
     background-position: left 50% top 49px;
-    background-size: contain;
+    background-size: cover;
+  }
+  @include mobile {
+    padding-bottom: 70.66667% !important;
   }
 }
 // #backgroundImage-1 {
@@ -33,6 +36,7 @@
   background-image: url("http://media.philly.com/images/ssHelmets-h4.JPG");
   background-position: center;
   @include tablet {
+    background-position: bottom;
     background-size: cover;
   }
 }
@@ -47,11 +51,17 @@
   background-attachment: fixed;
   background-size: cover;
   background-color: #000;
+
   @include tablet {
     min-height: 500px;
     min-height: 100%;
     height: auto;
+    background-size: contain;
     padding-bottom: percentage(800/1200)-5;
+    background-attachment:scroll;
+  }
+  @include mobile {
+    background-attachment:scroll;
   }
 }
 
