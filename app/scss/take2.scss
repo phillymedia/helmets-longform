@@ -1,0 +1,114 @@
+@import 'philly-styles/values';
+
+.helmets-scroll2 {
+    position: relative;
+
+    .image-scroll {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        @include display-flex;
+        align-items: center;
+    }
+
+    .fixedimg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        // bottom: 0;
+    }
+
+    .scroll-img {
+        display: none;
+        img {
+          width: 100%;
+          height: auto;
+          margin: auto;
+        }
+
+    }
+
+    .inview {
+        display: block;
+        position: absolute;
+        top: 0;
+        left:0;
+        right:0;
+        bottom:0;
+    }
+
+    .text-section2 {
+        padding: 50vh 0;
+        max-width: 500px;
+        margin: 0 auto;
+        @include mobile {
+            max-width: none;
+        };
+    }
+
+    .head {
+        font-weight: 900;
+        font-size: 22px;
+        background: rgba(white,0.85);
+        position: relative;
+        padding-left: 20px;
+        padding-right: 20px;
+
+        &::after {
+            position: absolute;
+            content: "";
+            left: 0;
+            right: 0;
+            top: -20px;
+            height: 20px;
+            background: rgba(white,0.85);
+            z-index: 5;
+        }
+    }
+
+    .text {
+        font-family: $philly-sans;
+        background: rgba(white,0.85);
+        position: relative;
+        padding-left: 20px;
+        padding-right: 20px;
+
+        &::after {
+            position: absolute;
+            content: "";
+            left: 0;
+            right: 0;
+            bottom: -20px;
+            height: 20px;
+            background: rgba(white,0.85);
+            z-index: 5;
+        }
+    }
+
+    .main-head {
+        padding-top: 25vh;
+        max-width: 800px;
+        text-align: center;
+        padding-left: 50px;
+        padding-right: 50px;
+        @include mobile {
+            padding: 0;
+            max-width: none;
+        };
+
+        .head {
+            font-size: 28px;
+            @include mobile {
+                font-size: 25px;
+                line-height: normal;
+            };
+        }
+
+        .text {
+            font-size: 18px;
+        }
+    }
+}
