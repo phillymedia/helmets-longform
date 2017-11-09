@@ -1,4 +1,3 @@
-
 // setTimeout(function() {
 //
 //     var gethelmetposition = ($(".scrolltrigger").offset().top);
@@ -64,7 +63,7 @@
 //
 //     })
 //     }, 1500);
-$(document).ready(function(){
+$(document).ready(function() {
     $(".text-section").each(function() {
         var $this = $(this);
         if ($this.attr("class").includes("active")) {
@@ -83,63 +82,84 @@ $(document).ready(function(){
 
 
 
-var loadgraphicImage = function(frame) {
-    var img = frame.find("img");
-    if (img.attr("src") == "#") {
-        var datasrc = img.attr("data-src");
-        img.attr("src", datasrc);
-        attr = datasrc;
-    }
-    return img;
-};
+    var loadgraphicImage = function(frame) {
+        var img = frame.find("img");
+        if (img.attr("src") == "#") {
+            var datasrc = img.attr("data-src");
+            img.attr("src", datasrc);
+            attr = datasrc;
+        }
+        return img;
+    };
 
-var advance = function(graphic, direction) {
-    graphic.find(".noNext").removeClass("noNext");
-    var current = graphic.find(".active");
-    var images = $(".text-section", graphic);
-    var index = images.index(current);
-    var direction;
-    if (direction == "right") {
-        var next = $(images[index + 1]);
-        var afterNext = $(images[index + 2]);
-    } else {
-        var next = $(images[index - 1]);
-        var afterNext = $(images[index - 2]);
-    }
-
-    if (images.index(afterNext) < 0) {
-        var getDirection;
+    var advance = function(graphic, direction) {
+        graphic.find(".noNext").removeClass("noNext");
+        var current = graphic.find(".active");
+        var images = $(".text-section", graphic);
+        var index = images.index(current);
+        var direction;
         if (direction == "right") {
-            getDirection = "next";
+            var next = $(images[index + 1]);
+            var afterNext = $(images[index + 2]);
         } else {
-            getDirection = "prev";
+            var next = $(images[index - 1]);
+            var afterNext = $(images[index - 2]);
         }
 
-        var getClass = "." + getDirection;
-        graphic.find(getClass).addClass("noNext");
-    } else {
-        graphic.find(".noNext").removeClass("noNext");
+        if (images.index(afterNext) < 0) {
+            var getDirection;
+            if (direction == "right") {
+                getDirection = "next";
+            } else {
+                getDirection = "prev";
+            }
+
+            var getClass = "." + getDirection;
+            graphic.find(getClass).addClass("noNext");
+        } else {
+            graphic.find(".noNext").removeClass("noNext");
+        }
+        if (images.index(next) < 0) return;
+
+        var image = loadgraphicImage(next);
+
+
+        if (afterNext) loadgraphicImage(afterNext);
+
+        next.addClass("active");
+        current.removeClass("active");
+
+        next.removeClass("post-active animate fade");
+        current.addClass("post-active animate");
+        current.addClass("fade");
+        next.addClass("animate");
     }
-    if (images.index(next) < 0) return;
-
-    var image = loadgraphicImage(next);
-
-
-    if (afterNext) loadgraphicImage(afterNext);
-
-    next.addClass("active");
-    current.removeClass("active");
-
-    next.removeClass("post-active animate fade");
-    current.addClass("post-active animate");
-    current.addClass("fade");
-    next.addClass("animate");
-}
-$(".helmets-scroll").each(function() {
-    $this = $(this);
-    $this.find(".arr").on("click", function() {
-        var direction = $(this).attr("class");
-        advance($this, direction.includes("next") ? "right" : "left");
+    $(".helmets-scroll").each(function() {
+        $this = $(this);
+        $this.find(".arr").on("click", function() {
+            var direction = $(this).attr("class");
+            advance($this, direction.includes("next") ? "right" : "left");
+        })
     })
-})
+
+    if ($(window).width() >= 1000) {
+        console.log($(".main-head").find('img').position().left)
+        $(".prev.arr").css("left", $(".main-head").find('img').position().left + "px");
+        $(".next.arr").css("right", $(".main-head").find('img').position().left + "px")
+    }
+
+    $(window).resize(function(){
+        if ($(window).width() >= 1000) {
+            console.log($(".main-head").find('img').position().left)
+            $(".prev.arr").css("left", $(".main-head").find('img').position().left + "px");
+            $(".next.arr").css("right", $(".main-head").find('img').position().left + "px")
+        }
+        else {
+            $(".prev.arr").css("left", "");
+            $(".next.arr").css("right", "")
+        }
+    })
+
+
+
 });
