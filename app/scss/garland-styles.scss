@@ -7,40 +7,62 @@
 }
 
 .helmets-scroll {
-    width: 100vw;
-    height: 105vh;
+    width: 100%;
+    height: auto;
     position: relative;
-    overflow: hidden;
-    top: 0;
-    left: 0;
-    right: 0;
+    // overflow: hidden;
+    display: block;
     z-index: 2;
     background: white;
     font-family: $philly-sans;
 
     .text-scroll {
-        position: absolute;
-        width: 100vw;
-        height: 100vh;
-        overflow: hidden;
-        z-index: 4;
+        // position: absolute;
+        // top: 0;
+        // left: 0;
+        // right: 0;
+        // bottom: 0;
+        // overflow: hidden;
+        // z-index: 4;
+        position: relative;
+        width: 100%;
+
 
         .text-section {
-            padding: 50vh 0;
-            max-width: 500px;
-            margin: 0 auto;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+
             @include mobile {
                 max-width: none;
             };
+
+            img {
+                width: 100%;
+                height: auto;
+                max-width: 900px;
+                margin: 0 auto;
+                @include mobile {
+                    width: 110%;
+                    margin-left: -5%;
+                };
+            }
         }
 
         .head {
+            margin-top: -50px;
             font-weight: 900;
-            font-size: 22px;
-            background: rgba(white,0.85);
+            font-size: 32px;
+            background: rgba(white,1);
             position: relative;
             padding-left: 20px;
             padding-right: 20px;
+
+            @include mobile {
+                margin-top: 0;
+                font-size: 26px;
+            };
+
 
             &::after {
                 position: absolute;
@@ -49,17 +71,20 @@
                 right: 0;
                 top: -20px;
                 height: 20px;
-                background: rgba(white,0.85);
+                background: rgba(white,1);
                 z-index: 5;
             }
         }
 
         .text {
+            @include flex(1 1 80%);
             font-family: $philly-sans;
-            background: rgba(white,0.85);
+            background: rgba(white,1);
             position: relative;
             padding-left: 20px;
             padding-right: 20px;
+            max-width: 700px;
+            margin:0 auto;
 
             &::after {
                 position: absolute;
@@ -68,39 +93,39 @@
                 right: 0;
                 bottom: -20px;
                 height: 20px;
-                background: rgba(white,0.85);
+                background: rgba(white,1);
                 z-index: 5;
             }
         }
 
-        .main-head {
-            padding-top: 25vh;
-            max-width: 800px;
-            text-align: center;
-            padding-left: 50px;
-            padding-right: 50px;
-            @include mobile {
-                padding: 0;
-                max-width: none;
-            };
-
-            .head {
-                font-size: 28px;
-                @include mobile {
-                    font-size: 25px;
-                    line-height: normal;
-                };
-            }
-
-            .text {
-                font-size: 18px;
-            }
-        }
+        // .main-head {
+        //     padding-top: 25vh;
+        //     max-width: 800px;
+        //     text-align: center;
+        //     padding-left: 50px;
+        //     padding-right: 50px;
+        //     @include mobile {
+        //         padding: 0;
+        //         max-width: none;
+        //     };
+        //
+        //     .head {
+        //         font-size: 28px;
+        //         @include mobile {
+        //             font-size: 25px;
+        //             line-height: normal;
+        //         };
+        //     }
+        //
+        //     .text {
+        //         font-size: 18px;
+        //     }
+        // }
     }
 
     .image-scroll {
         top: 40px;
-        position: absolute;
+        // position: absolute;
         width: 100vw;
         height: 100vh;
         z-index: 3;
@@ -108,17 +133,19 @@
         align-items: center;
         align-content: center;
     }
+
     .scroll-img {
         position: absolute;
+        top: 50%;
+        @include transform(translateY(-50%));
+        bottom: auto;
         width: 100%;
         opacity: 0;
         @include transition(opacity 0.5s ease);
-
         @include mobile {
             width: 130%;
             margin-left: -15%;
         };
-
 
         img {
             width: 100%;
@@ -132,7 +159,6 @@
     opacity: 1 !important;
 }
 
-
 .in-view {
     position: fixed;
 }
@@ -142,10 +168,51 @@
 }
 
 .creditscroll {
-    position: absolute;
-    bottom: 10vh;
-    z-index: 4;
+    // position: absolute;
+    // bottom: 10vh;
+    // z-index: 4;
     right: 20px;
     font-style: normal;
+    padding-top: 40px;
+}
 
+.skip {
+    top: 100px;
+    right: 20px;
+    position: absolute;
+    z-index: 100;
+    background: #ddd;
+    padding: 6px 10px 4px;
+    font-size: 15px;
+    font-family: $philly-sans;
+    font-weight: 900;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.arr {
+    position: absolute;
+    top: 50%;
+    font-size: 50px;
+    padding: 20px;
+    @include transform(translateY(-50%));
+    cursor: pointer;
+    z-index: 100;
+    @include mobile {
+        font-size: 35px;
+        padding: 10px;
+    };
+}
+
+.noNext {
+    pointer-events: none;
+    opacity: 0.2;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
 }
